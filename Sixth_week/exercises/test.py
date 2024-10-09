@@ -1,17 +1,17 @@
-import unittest
-def add(x, y):
-    return x + y
+# import unittest
+# def add(x, y):
+#     return x + y
 
-class TestAdd(unittest.TestCase):
-    def test_add_positive(self):
-        result = add(5, 9)
-        self.assertEqual(result, 14)
-    def test_add_negative(self):
-        result = add(-5, 7)
-        self.assertEqual(result, 2)
+# class TestAdd(unittest.TestCase):
+#     def test_add_positive(self):
+#         result = add(5, 9)
+#         self.assertEqual(result, 14)
+#     def test_add_negative(self):
+#         result = add(-5, 7)
+#         self.assertEqual(result, 2)
         
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 import unittest
 def square(num):
