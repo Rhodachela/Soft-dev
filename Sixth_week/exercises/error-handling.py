@@ -50,3 +50,10 @@ try:
     purchase_item("Watermelon", 1)  # Item not available
 except OutOfStockError as e:
     print(e)
+
+try:
+    with open("practice", "r") as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print("Your file is not found")
