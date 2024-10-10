@@ -47,19 +47,19 @@ class Teacher(Person):
 
 student1 = Student("Bliss", 23, "A")
 student1.introduce()
-# print(student1)
-# student1.view_grade()
+print(student1)
+student1.view_grade()
 teacher1 = Teacher("Jane", 45, "English")
 teacher1.introduce()
 
 teacher1.assign_grade(student1, "B")
-# print(teacher1.teach())
+print(teacher1.teach())
 
-# student1 = Student("Bliss", 23, "A")
-# print(student1)
-# student1.view_grade()
+student1 = Student("Bliss", 23, "A")
+print(student1)
+student1.view_grade()
 
-# person1 = Person("Hylla", 70)
-# person1.introduce()
+person1 = Person("Hylla", 70)
+person1.introduce()
 
 #Polymorphism
