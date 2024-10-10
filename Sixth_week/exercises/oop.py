@@ -23,15 +23,21 @@ class Person:
     def introduce(self):
         print (f"Hello, my name is {self.name}, I am {self.age} years old.")
 class Student(Person):
+    instances = []
     def __init__(self, name, age, grade):
         super().__init__(name, age)
         self.grade = grade
+        Student.instances.append(self)
     def __str__(self):
         return f"{self.name} is {self.age} years old and has grade {self.grade}"
     def enroll(self):
         print (f"{self.name} whose age is {self.age} has been enrolled")
     def view_grade(self):
         print (f"{self.name}'s grade is {self.grade}")
+    @classmethod
+    def view_all_instances(cls):
+        for instance in cls.instances:
+            print(f"{instance.name}, {instance.age} years old")
     
 class Teacher(Person):
     def __init__(self, name, age, subject):
@@ -46,20 +52,23 @@ class Teacher(Person):
         print(f"{self.name} has assigned grade {grade} to {student.name}")
 
 student1 = Student("Bliss", 23, "A")
-student1.introduce()
-print(student1)
-student1.view_grade()
-teacher1 = Teacher("Jane", 45, "English")
-teacher1.introduce()
+student2 = Student("Blake", 25, "B")
+Student.view_all_instances()
 
-teacher1.assign_grade(student1, "B")
-print(teacher1.teach())
+# student1.introduce()
+# print(student1)
+# student1.view_grade()
+# teacher1 = Teacher("Jane", 45, "English")
+# teacher1.introduce()
 
-student1 = Student("Bliss", 23, "A")
-print(student1)
-student1.view_grade()
+# teacher1.assign_grade(student1, "B")
+# print(teacher1.teach())
 
-person1 = Person("Hylla", 70)
-person1.introduce()
+# student1 = Student("Bliss", 23, "A")
+# print(student1)
+# student1.view_grade()
+
+# person1 = Person("Hylla", 70)
+# person1.introduce()
 
 #Polymorphism
