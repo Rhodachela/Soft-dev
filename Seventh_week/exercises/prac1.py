@@ -1,23 +1,23 @@
-# class Shape:
-#     def calculate_area(self):
-#           return None    
-# class Rectangle(Shape):
-#     def calculate_area(self, length, width):
-#         area = length * width
-#         return area
-# rect = Rectangle()
-# print(rect.calculate_area(45, 59))        
+class Shape:
+    def calculate_area(self):
+          return None    
+class Rectangle(Shape):
+    def calculate_area(self, length, width):
+        area = length * width
+        return area
+rect = Rectangle()
+print(rect.calculate_area(45, 59))        
 
-# class Bird:
-#     def fly(self):
-#         return ("It can fly high up in the sky")
-# class Mammal:
-#     def run(self):
-#         return ("It rans really fast")
-# class Bat(Bird, Mammal):
-#     pass
-# batman = Bat()
-# print(batman.run())
+class Bird:
+    def fly(self):
+        return ("It can fly high up in the sky")
+class Mammal:
+    def run(self):
+        return ("It rans really fast")
+class Bat(Bird, Mammal):
+    pass
+batman = Bat()
+print(batman.run())
 
 class Dog:
     def make_sound(self):
