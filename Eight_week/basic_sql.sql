@@ -67,3 +67,15 @@ WHERE
 
 UPDATE Orders SET TotalOrders = 5 WHERE OrderID = 1;
 DELETE FROM Orders WHERE OrderID = 4;
+
+
+SELECT * FROM Orders ORDER BY TotalOrders ASC;
+SELECT * FROM Orders WHERE OrderID > 2 and TotalOrders > 3;
+
+SELECT 
+    s.FirstName,
+    s.Email,
+    o.OrderDate,
+    o.TotalOrders
+FROM Students s
+INNER JOIN Orders o ON s.StudentID = o.StudentID;
