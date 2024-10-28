@@ -24,7 +24,7 @@ CREATE TABLE Students(
     EnrollmentDate DATE
 );
 INSERT INTO Students(StudentID, FirstName, LastName, Email, EnrollmentDate)
-VALUES  (1, "Rhoda", "Chelangat", "rhodachela@gmail.com", "2019-09-9"),
+VALUES  (1, "Rhoda", "Chelangat", "rhodachela@gmail.com", "2019-09-09"),
         (2, "Brenda", "Makena", "altavia@gmail.com", "2020-09-20"),
         (3, "Brian", "Kip", "kip@gmail.com", "2020-09-15"),
         (4, "Collo", "MMasaba", "mmasaba@gmail.com", "2019-09-10"),
@@ -33,3 +33,37 @@ VALUES  (1, "Rhoda", "Chelangat", "rhodachela@gmail.com", "2019-09-9"),
 UPDATE Students SET Email = "chelarhoda@gmail.com" WHERE StudentID = 1;
 
 DELETE FROM Students WHERE StudentID = 5;
+
+CREATE TABLE Orders(
+    OrderID INT PRIMARY KEY,
+    StudentID INT,
+    OrderDate Date,
+    TotalOrders INT NOT NULL,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+);
+INSERT INTO Orders(OrderID, StudentID, OrderDate, TotalOrders)
+VALUES  (1, 1, "2024-10-28", 5),
+        (2, 2, "2024-10-27", 3),
+        (3, 3, "2024-10-26", 4),
+        (4, 2, "2024-10-19", 9);
+INSERT INTO Orders(OrderID, StudentID, OrderDate, TotalOrders)
+VALUES  (5, 3, "2024-1--10", 2);
+
+SELECT * FROM Orders WHERE OrderDate = "2024-10-19";
+SELECT
+    Students.StudentID,
+    Students.FirstName,
+    Students.LastName,
+    Students.Email,
+    Orders.OrderID,
+    Orders.OrderDate,
+    Orders.TotalOrders
+FROM
+    Orders
+Join
+    Students ON Orders.StudentID = Students.StudentID
+WHERE
+    Students.StudentID = 1;
+
+UPDATE Orders SET TotalOrders = 5 WHERE OrderID = 1;
+DELETE FROM Orders WHERE OrderID = 4;
