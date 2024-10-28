@@ -63,3 +63,5 @@ VALUES  (1, "Eunice", "English"),
 UPDATE Employees SET Department = "Dev Education" WHERE EmployeeID = 5;
 
 SELECT Department, COUNT(EmployeeID) AS TotalEmployees FROM Employees GROUP BY Department;
+
+ALTER TABLE Customers MODIFY Column  CustomerID INT AUTO_INCREMENT;
