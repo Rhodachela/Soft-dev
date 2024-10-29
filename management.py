@@ -33,7 +33,7 @@ def add_book():
         val = (title, author, ISBN)
         mycursor.execute(sql, val)
         mydb.commit()
-        print(mycursor.rowcount, "books inserted")
+        print(mycursor.rowcount, "book(s) inserted")
         response = input("Do you want to add another book? (YES/NO): ").strip().lower()
         if response == "no":
             print("Thanks for the adds today. See you next time!")
