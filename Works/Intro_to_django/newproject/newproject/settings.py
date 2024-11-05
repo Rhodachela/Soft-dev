@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "news_feed",
-    "users.apps.UsersConfig",
     "ads.apps.AdsConfig",
 ]
 
@@ -79,8 +77,12 @@ WSGI_APPLICATION = 'newproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'library_management',
+        'USER': 'root',
+        'PASSWORD': 'MySQL.Installer',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
