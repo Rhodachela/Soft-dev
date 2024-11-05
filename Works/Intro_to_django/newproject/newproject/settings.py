@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "news_feed",
     "users.apps.UsersConfig",
-    "ads"
+    "ads.apps.AdsConfig",
 ]
 
 MIDDLEWARE = [
