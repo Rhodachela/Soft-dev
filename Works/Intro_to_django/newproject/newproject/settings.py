@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "ads.apps.AdsConfig",
+    'ads.apps.AdsConfig',
+    'bookshelf.apps.BookshelfConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'newproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'library_management',
+        'NAME': 'Bookshelf',
         'USER': 'root',
         'PASSWORD': 'MySQL.Installer',
         'HOST': 'localhost',
