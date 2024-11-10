@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Home -{{ name }} {% endblock %}
+{% block content %}
+    <h2> Welcome, {{ name }}! </h2>
+    {% load custom_filters %}
+    <p>Age: {{ age|add_suffix:"years old" }}</p>
+    <p>Bio: {{ bio }}</p>
+
+    <h3>Hobbies: </h3>
+    <ul>
+        {% for hobby in hobbies %}
+            <li>{{ hobby|capfirst }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

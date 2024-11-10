@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}R.CHELA{% endblock%}
+        </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <!-- Header section -->
+        <header>
+            <h1>R.CHELA</h1>
+            <p>Welcome to my website about my life!</p>
+        </header>
+
+        <!-- Navigation menu -->
+         <nav>
+            <ul>
+                <li><a href="{% url 'users:home' %}">Home</a></li>
+                <li><a href="{% url 'users:about' %}">About</a></li>
+                <li><a href="{% url 'users:contact' %}">Contact</a></li>
+                <li><a href="{% url 'users:blog' %}">Blog</a></li>
+            </ul>
+         </nav>
+
+         <!-- Main Content area -->
+          <main>
+            {% block content %}{% endblock %}
+          </main>
+
+          <!-- Footer section -->
+           <footer>
+            <p>&copy; 2023 R.CHELA. All rights reserved. </p>
+           </footer>
+           <!-- All scripts -->
+            <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>
