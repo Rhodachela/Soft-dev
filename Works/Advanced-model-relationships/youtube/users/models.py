@@ -10,13 +10,13 @@ class User(models.Model):
     last_name = models.CharField(max_length= 100)
     email = models.EmailField()
 
-#Create user
-user = User.objects.create_user("John Doe", "john@gmail.com", "password123")
+# #Create user
+# user = User.objects.create_user("John Doe", "john@gmail.com", "password123")
 
-# Retrieve a user based on username
-user = User.objects.get(username="John")
+# # Retrieve a user based on username
+# user = User.objects.get(username="John")
 
-class SignUpView(CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+# class SignUpView(CreateView):
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy("login")
+#     template_name = "registration/signup.html"
