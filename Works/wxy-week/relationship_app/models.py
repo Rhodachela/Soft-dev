@@ -13,5 +13,5 @@ class Library(models.Model):
     books = models.ManyToManyField(Book, related_name="libraries")
 
 class Librarian (models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=400)
     library = models.OneToOneField()
