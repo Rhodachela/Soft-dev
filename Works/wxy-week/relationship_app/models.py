@@ -9,7 +9,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE,related_name= "books")
 
 class Library(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=300)
     books = models.ManyToManyField(Book, related_name="libraries")
 
 class Librarian (models.Model):
