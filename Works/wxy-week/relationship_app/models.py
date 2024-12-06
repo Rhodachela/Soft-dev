@@ -2,11 +2,47 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser, BaseUserManager
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.models import Permission
 
 # Create your models here.
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError("The email must be set")
+        if not password:
+            raise ValueError("Password required!")
+        
+        user = self.model(email = self.normalize_email(email))   
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_superuser(BaseUserManager):
+        user.is_staff = True
+        user.is_superuser = True
+        user = self.create_user(email, password)
+        user.save(using=self._db)
+
+        return user
+
+class CustomUser(AbstractUser):
+    bio = models.CharField(blank=True)
+    username = None
+    email = models.EmailField(unique=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+    USERNAME_FIELD = email
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.email
+
 def my_view(request):
     if request.user.has_perm('Can_add_book'):
         ...
@@ -27,9 +63,6 @@ class CustomUser(AbstractBaseUser):
     phone_number = models.CharField(max_length=50)
     date_of_birth = models.DateField()
 
-class CustomUser(AbstractUser):
-    bio = models.CharField(blank=True)
-
 
 class Author(models.Model):
     name = models.CharField(max_length=255)
@@ -43,10 +76,11 @@ class Book(models.Model):
     publication_year = models.IntegerField(null=True, blank=True)
 
     class Meta:
-        permissions = [
-            ("can_add_book", "Can add a new book"),
-            ("can_change_books", "Can change book details"),
-            ("can_delete_books", "Can delete books"),
+        Permissions = [
+            ("can_view", ("Can view book")),
+            ("can_create_book", ("Can create a new book")),
+            ("can_edit_book", ("Can change the book format")),
+            ("can_delete_book", ("Can delete books")),
         ]
 
     def __str__(self):
