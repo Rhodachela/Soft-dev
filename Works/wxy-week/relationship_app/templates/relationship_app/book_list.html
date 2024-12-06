@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>BOOK LIST</title>
+        <link rel="stylesheets" href="{ % static 'css/styles.css' %}">
+    </head>
+    <body>
+        <h1>Book List</h1>
+        {% if books %}
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <strong>{{ bok.title }}</strong> by {{ book.author }}
+                        <p>Published on: {{ book.published_date }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books available! </p>
+        {% endif %}
+    </body>
+</html>
