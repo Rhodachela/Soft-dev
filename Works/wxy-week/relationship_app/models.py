@@ -20,7 +20,7 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(BaseUserManager):
+    def create_superuser(self, email, password=None, **extra_fields):
         user.is_staff = True
         user.is_superuser = True
         user = self.create_user(email, password)
@@ -35,7 +35,7 @@ class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
 
-    USERNAME_FIELD = email
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
@@ -58,10 +58,10 @@ class EmailBackend(BaseBackend):
         # Implement logic to retrieve user based on user ID
         ...
 
-class CustomUser(AbstractBaseUser):
-    email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=50)
-    date_of_birth = models.DateField()
+# class CustomUser(AbstractBaseUser):
+#     email = models.EmailField(unique=True)
+#     phone_number = models.CharField(max_length=50)
+#     date_of_birth = models.DateField()
 
 
 class Author(models.Model):
@@ -77,10 +77,10 @@ class Book(models.Model):
 
     class Meta:
         Permissions = [
-            ("can_view", ("Can view book")),
-            ("can_create_book", ("Can create a new book")),
-            ("can_edit_book", ("Can change the book format")),
-            ("can_delete_book", ("Can delete books")),
+            ("can_view", "Can view book"),
+            ("can_create_book", "Can create a new book"),
+            ("can_edit_book", "Can change the book format"),
+            ("can_delete_book", "Can delete books"),
         ]
 
     def __str__(self):
@@ -102,7 +102,7 @@ class Librarian(models.Model):
         return self.name
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userprofiles")
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="userprofiles")
     ROLE_CHOICES = [
         ('Admin', 'Admin'),
         ('Librarian', 'Librarian'),
