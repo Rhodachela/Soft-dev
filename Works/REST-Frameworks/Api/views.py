@@ -2,8 +2,27 @@ from rest_framework.viewsets import ModelViewSet
 from .serializers import BookSerializer
 from my_app.models import Book
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from my_app.models import Post
+from .serializers import PostSerializer
+from my_app.permissions import IsAuthororReadOnly
+
+class PostListCreateAPIView(generics.ListCreateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated, IsAuthororReadOnly]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class PostRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated, IsAuthororReadOnly]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
