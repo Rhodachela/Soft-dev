@@ -10,7 +10,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
     description = models.TextField(max_length=100)
     price = models.DecimalField(max_digits=20, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products") #category.products
