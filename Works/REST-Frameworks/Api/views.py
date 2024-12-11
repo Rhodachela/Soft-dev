@@ -55,7 +55,6 @@ class MyModelCreateView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class CommentView(ModelViewSet):
-    queryset = Comments.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
