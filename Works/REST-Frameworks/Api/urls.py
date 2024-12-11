@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostListCreateAPIView, PostRetrieveUpdateDestroyAPIView
+from .views import PostListCreateAPIView, PostRetrieveUpdateDestroyAPIView, CommentView
 
 urlpatterns = [
     path('posts/', PostListCreateAPIView.as_view(), name="post-list-create"),
