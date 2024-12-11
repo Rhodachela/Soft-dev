@@ -58,3 +58,4 @@ class CommentView(ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
