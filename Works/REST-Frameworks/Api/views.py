@@ -53,3 +53,6 @@ class MyModelCreateView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class CommentView(ModelViewSet):
+    serializer_class = CommentSerializer
