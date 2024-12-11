@@ -56,3 +56,4 @@ class MyModelCreateView(APIView):
 
 class CommentView(ModelViewSet):
     serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
