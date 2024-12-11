@@ -21,7 +21,7 @@ class BookSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ["id", "title", "content", "author", "created_at"]
+        fields = ["title", "content", "author", "created_at"]
 
 class CommentSerializer(serializers.ModelSerializer):
     author_name = serializers.CharField(source="author.usename", read_only=True)
