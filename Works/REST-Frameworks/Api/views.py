@@ -6,7 +6,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from my_app.models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, CommentSerializer
 from my_app.permissions import IsAuthororReadOnly
 
 class PostListCreateAPIView(generics.ListCreateAPIView):
