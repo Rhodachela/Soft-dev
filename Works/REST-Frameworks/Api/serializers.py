@@ -46,7 +46,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ["id","email", "username", "first_name", "last_name", "full_name" ]
+        fields = ["email", "username", "first_name", "last_name", "full_name" ]
 
         def get_full_name(self, obj):
             return f"{obj.first_name} {obj.last_name}" if obj.first_name and obj.last_name else obj.username
