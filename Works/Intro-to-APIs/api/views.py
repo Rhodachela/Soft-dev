@@ -6,6 +6,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 from rest_framework.authentication import TokenAuthentication
+from rest_framework import filters
 
 # Create your views here.
 
@@ -17,7 +18,8 @@ class BookList(generics.ListAPIView):
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    # permission_classes = [IsAuthenticated]
-    # authentication_classes = [TokenAuthentication]
+    search_fields = ['title', 'author']
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 
